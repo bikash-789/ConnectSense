@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./core/LoginSignup";
+import Login from "./components/LoginSignup";
 
 function Routess() {
   return (

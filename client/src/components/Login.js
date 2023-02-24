@@ -1,6 +1,6 @@
 import React from "react";
-import Google from "../assets/google25X25.svg";
-import HRL from "../assets/hr_or_bar.svg";
+import Google from "../assets/images/google25X25.svg";
+import HRL from "../assets/images/hr_or_bar.svg";
 import { Link } from "react-router-dom";
 function Login() {
   return (

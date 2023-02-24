@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/logo35X35.svg";
+import Logo from "../assets/images/logo35X35.svg";
 import Login from "./Login";
 import Signup from "./Signup";
 
