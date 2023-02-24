@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 const uuidv1 = require("uuid").v1;
+const moment = require("moment-timezone");
+const dateKolkata = moment.tz(Date.now(), "Asia/Kolkata");
 
 // Create a user schema
 const userSchema = new mongoose.Schema(

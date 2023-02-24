@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../assets/images/logo35X35.svg";
+import Banner from "./Banner";
 import Login from "./Login";
 import Signup from "./Signup";
 
@@ -16,14 +17,19 @@ function LoginSignup(props) {
         <br />
         <br />
         {/* Login/Signup component */}
+        <Banner message="Welcome again to!" />
         {props.element === "login" && <Login />}
         {props.element === "signup" && <Signup />}
       </section>
 
       {/* Image */}
-      <section className="w-full">
-        <img src="https://picsum.photos/900/920" alt="fig" />
-        <div className="relative bottom-[200px] z-10">
+      <section className="md:w-full">
+        <img
+          src="https://picsum.photos/900/925"
+          alt="fig"
+          className="object-contain"
+        />
+        <div className="relative bottom-[150px] z-10">
           <p className="text-white text-6xl px-4 font-sans italic">
             Even without sight there is still Vision!
           </p>
