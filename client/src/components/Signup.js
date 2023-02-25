@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { signUp } from "../api/Auth_API";
+import Banner from "./Banner";
 
 function Signup() {
   const [values, setValues] = useState({
@@ -9,6 +10,11 @@ function Signup() {
     email: "",
     password: "",
   });
+
+  // Useful hooks for state management
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   // Handle change method
   const handleChange = (e) => {
@@ -21,13 +27,14 @@ function Signup() {
     e.preventDefault();
     const res = await signUp(values);
     if (res.error) {
-      console.log(res.error);
+      setError(res.error);
     }
-    console.log(JSON.stringify(res.message));
+    setError(res.message);
   };
 
   return (
     <div className="w-3/4 m-2 flex flex-col items-center p-2">
+      {error && <Banner message={error} />}
       <h1 className="text-5xl text-center">Welcome!</h1>
       <h6 className="text-slate-500 text-center text-lg">
         Please enter your details

@@ -1,6 +1,5 @@
 import React from "react";
 import Logo from "../assets/images/logo35X35.svg";
-import Banner from "./Banner";
 import Login from "./Login";
 import Signup from "./Signup";
 
@@ -17,7 +16,6 @@ function LoginSignup(props) {
         <br />
         <br />
         {/* Login/Signup component */}
-        <Banner message="Welcome again to!" />
         {props.element === "login" && <Login />}
         {props.element === "signup" && <Signup />}
       </section>
