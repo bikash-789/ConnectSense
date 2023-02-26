@@ -26,3 +26,40 @@ module.exports.signUp = (req, res) => {
     });
   });
 };
+
+// Signin function
+module.exports.signIn = (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({
+      error: "All fields are required!",
+    });
+  }
+  // Search for user in database
+  User.findOne({ email }, (err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        error: "User with this email doesn't exist, please Signup.",
+      });
+    }
+    // If user is found, make sure to match the password
+    if (!user.authenticate(password)) {
+      return res.status(401).json({
+        error: "Email and password doesn't match",
+      });
+    }
+
+    // Generate a signed token with user id and secret
+    const token = jwtt.sign({ _id: user._id }, process.env.SECRET);
+
+    // Persist the token as 't' in cookie with expirty date
+    res.cookie("Token", token, { expire: new Date().getMinutes() + 20 });
+
+    // Return response with user and token to Frontend app
+    const { _id, name, email } = user;
+    return res.json({
+      token,
+      user: { _id, name, email },
+    });
+  });
+};
