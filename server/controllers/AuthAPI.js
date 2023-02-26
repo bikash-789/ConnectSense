@@ -1,6 +1,7 @@
 const User = require("../model/user");
 const jwtt = require("jsonwebtoken");
 const { expressjwt: jwt } = require("express-jwt");
+const { errorHandler } = require("../helper/DB_ErrorHandler");
 
 // Signup function - Returns 'user info' after successfull signup
 module.exports.signUp = (req, res) => {
@@ -15,7 +16,7 @@ module.exports.signUp = (req, res) => {
   user.save((err, user) => {
     if (err) {
       return res.status(400).json({
-        error: err,
+        error: errorHandler(err),
       });
     }
     user.salt = undefined;
