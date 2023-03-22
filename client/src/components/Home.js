@@ -6,6 +6,10 @@ import RightArrow from "../assets/images/RightArrow18X18.svg";
 import ObjectDetection from "../assets/images/object-detection.svg";
 import TextSpeech from "../assets/images/textSpeech.svg";
 import SpeechText from "../assets/images/speechText.svg";
+import Logo from "../assets/images/logo55X55.svg";
+import Instagram from "../assets/images/instagram25X25.svg";
+import LinkedIn from "../assets/images/linked-in25X25.svg";
+import Twitter from "../assets/images/twitter30X25.svg";
 
 function Home() {
   return (
@@ -22,14 +26,14 @@ function Home() {
               </Link>
             </li>
             <li className="px-5 py-2 text-sm hover:bg-button-color">
-              <Link to="#about">
+              <a href="#about-us">
                 <b>ABOUT</b>
-              </Link>
+              </a>
             </li>
             <li className="px-5 py-2 text-sm hover:bg-button-color">
-              <Link to="#contact">
+              <a href="#contact-us">
                 <b>CONTACT</b>
-              </Link>
+              </a>
             </li>
             <li>
               <button className="px-5 py-2 text-sm hover:bg-button-color flex items-center">
@@ -65,7 +69,7 @@ function Home() {
         style={{ fontFamily: `'Inter', sans-serif;` }}
       >
         <h3
-          className="bg-button-color h-full flex items-center justify-center text-6xl"
+          className="h-full flex items-center justify-center text-6xl text-black"
           style={{ fontFamily: `'Cedarville Cursive', cursive;` }}
         >
           What a blind person needs is not a teacher but another self!
@@ -76,7 +80,10 @@ function Home() {
       <section>
         <h3
           className="text-6xl text-black text-center py-3"
-          style={{ fontFamily: `'Inter', sans-serif;` }}
+          style={{
+            fontFamily: `'Tillana', cursive;`,
+            background: `linear-gradient(89.77deg, #E7CCA4 26.41%, #DDA348 91.21%)`,
+          }}
         >
           Features
         </h3>
@@ -171,6 +178,147 @@ function Home() {
               Try now
             </button>
           </p>
+        </div>
+      </section>
+
+      {/* About US */}
+      <section id="about-us">
+        <h3
+          className="text-6xl text-black text-center py-3"
+          style={{
+            fontFamily: `'Inter', sans-serif;`,
+            background: `linear-gradient(89.77deg, #E7CCA4 26.41%, #DDA348 91.21%)`,
+          }}
+        >
+          About us
+        </h3>
+        {/* Parent contianer */}
+
+        <div className="border p-4 flex flex-col items-center overflow-scroll scroll-smooth">
+          {/* Cards container */}
+          <div className="flex items-center justify-start ml-20">
+            {/* #1 */}
+            <div className="w-[450px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around mx-2">
+              {/* Image */}
+              <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
+              {/* Description */}
+              <div
+                className="flex flex-col items-center justify-start text-black w-full py-10"
+                style={{ background: "#FFE5BF" }}
+              >
+                <p className="text-2xl"> Developer Name </p>
+                <p className="text-lg">Registraion No.</p>
+              </div>
+            </div>
+            {/* #2 */}
+            <div className="w-[450px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around mx-2">
+              {/* Image */}
+              <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
+              {/* Description */}
+              <div
+                className="flex flex-col items-center justify-start text-black w-full py-10"
+                style={{ background: "#FFE5BF" }}
+              >
+                <p className="text-2xl"> Developer Name </p>
+                <p className="text-lg">Registraion No.</p>
+              </div>
+            </div>
+            {/* #3 */}
+            <div className="w-[450px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around mx-2">
+              {/* Image */}
+              <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
+              {/* Description */}
+              <div
+                className="flex flex-col items-center justify-start text-black w-full py-10"
+                style={{ background: "#FFE5BF" }}
+              >
+                <p className="text-2xl"> Developer Name </p>
+                <p className="text-lg">Registraion No.</p>
+              </div>
+            </div>
+            {/* #4 */}
+            <div className="w-[450px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around mx-2">
+              {/* Image */}
+              <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
+              {/* Description */}
+              <div
+                className="flex flex-col items-center justify-start text-black w-full py-10"
+                style={{ background: "#FFE5BF" }}
+              >
+                <p className="text-2xl"> Developer Name </p>
+                <p className="text-lg">Registraion No.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* About us description */}
+        <div className="px-10 py-16">
+          <p className="text-black text-xl">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi,
+            placeat sequi doloribus porro maxime asperiores voluptatum repellat
+            reprehenderit sed non sint quasi ex sit eos natus vitae tempora
+            delectus earum! Lorem ipsum dolor sit amet consectetur, adipisicing
+            elit. Eum iusto ab quibusdam tenetur officiis labore molestiae?
+            Optio quia quibusdam quae beatae minima odio at distinctio
+            architecto. Repellendus voluptatum veniam cum. Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Tempore enim autem maxime, sequi
+            voluptatibus eveniet ad quisquam obcaecati explicabo fuga mollitia
+            porro in suscipit, nemo beatae fugit perferendis. Voluptate,
+            debitis?
+          </p>
+        </div>
+      </section>
+      <hr />
+      {/* Footer / Contact us */}
+      <section
+        style={{ background: "#353434" }}
+        className="w-full h-[206px]"
+        id="contact-us"
+      >
+        {/* container */}
+        <div className="flex items-center justify-evenly p-10">
+          {/* Logo */}
+          <div className="flex items-center justify-start px-10 ">
+            <img src={Logo} alt="logo" />
+            <p className="px-2 text-xl">
+              <b>Assited Vision</b>
+            </p>
+          </div>
+          {/* Address */}
+          <div className="flex flex-col items-start justify-start px-10 ">
+            <p>
+              <b>Address</b>
+            </p>
+            <br />
+            <address>
+              Vellore Institute of Technology, Vellore <br /> Vellore, Tamil
+              Nadu, 632014
+            </address>
+          </div>
+          {/* Social media */}
+          <div className="flex flex-col items-start justify-start px-10 ">
+            <p className="mx-4">
+              <b>Social</b>
+            </p>
+            <br />
+            <ul className="block">
+              <li className="inline-block mx-4">
+                <a href="www.instagram.com" target="_blank">
+                  <img src={Instagram} alt="instagram" />
+                </a>
+              </li>
+              <li className="inline-block mx-4">
+                <a href="www.linkedin.com" target="_blank">
+                  <img src={LinkedIn} alt="linkedIn" />
+                </a>
+              </li>
+              <li className="inline-block mx-4">
+                <a href="www.twitter.com" target="_blank">
+                  <img src={Twitter} alt="twitter" />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </article>
