@@ -10,28 +10,41 @@ import Logo from "../assets/images/logo55X55.svg";
 import Instagram from "../assets/images/instagram25X25.svg";
 import LinkedIn from "../assets/images/linked-in25X25.svg";
 import Twitter from "../assets/images/twitter30X25.svg";
+import ObjectCover from "../assets/images/object-detection.png";
+import TTS from "../assets/images/TTS.png";
+import STT from "../assets/images/STT.webp";
 
 function Home() {
   return (
     <article className="text-white scroll-smooth" id="header">
+      {/* Hero Image goes here */}
       <section
-        className="h-[915px]"
+        className="h-screen"
         style={{ backgroundImage: `url(${BGImg})` }}
       >
-        <nav className="w-3/4 mx-auto relative top-5">
+        <nav className="mx-auto bg-black w-full text-white fixed py-1">
           <ul className="flex items-center justify-around">
-            <li className="px-5 py-2 text-sm hover:bg-button-color">
-              <Link to="/home">
+            <li>
+              <Link
+                to="/home"
+                className="px-5 py-2 text-sm hover:bg-button-color"
+              >
                 <b>HOME</b>
               </Link>
             </li>
-            <li className="px-5 py-2 text-sm hover:bg-button-color">
-              <a href="#about-us">
+            <li>
+              <a
+                href="#about-us"
+                className="px-5 py-2 text-sm hover:bg-button-color"
+              >
                 <b>ABOUT</b>
               </a>
             </li>
-            <li className="px-5 py-2 text-sm hover:bg-button-color">
-              <a href="#contact-us">
+            <li>
+              <a
+                href="#contact-us"
+                className="px-5 py-2 text-sm hover:bg-button-color"
+              >
                 <b>CONTACT</b>
               </a>
             </li>
@@ -43,9 +56,9 @@ function Home() {
             </li>
           </ul>
         </nav>
-        <div className="relative w-1/3 top-[381px] left-[50px] ">
+        <div className="relative w-1/3 top-[100px] md:top-[350px] left-[50px] ">
           <p
-            className="text-7xl"
+            className="text-xl md:text-3xl lg:text-5xl xl:text-7xl"
             style={{
               background:
                 "linear-gradient(305.97deg, #BB780F 6.24%, #FFFFFF 6.25%, #FCE8D1 43.95%, #FF8E0D 117.61%, #FF9317 117.62%)",
@@ -57,26 +70,56 @@ function Home() {
           >
             The eyes are useless when the mind is blind.
           </p>
-          <button className="rounded-3xl relative top-10 py-3 px-10 bg-orange-500 text-orange-100 flex items-center">
+          <a
+            href="#features"
+            className="rounded-xl md:rounded-xl relative top-10 py-2 md:py-3 px-4 w-[150px] md:w-[200px] md:px-10 bg-orange-500 text-orange-100 flex items-center"
+          >
             Explore now &nbsp;
             <img src={RightArrow} alt="right-arrow" className="inline-block" />
-          </button>
+          </a>
         </div>
       </section>
       {/* Dashboard goes here! */}
       <section
+        id="features"
         className="h-[712px]"
         style={{ fontFamily: `'Inter', sans-serif;` }}
       >
-        <h3
-          className="h-full flex items-center justify-center text-6xl text-black"
-          style={{ fontFamily: `'Cedarville Cursive', cursive;` }}
-        >
-          What a blind person needs is not a teacher but another self!
-        </h3>
+        <div className="flex w-full items-center text-black h-full overflow-hidden">
+          <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all  hover:cursor-pointer">
+            <a href="#about-us" className="h-full">
+              <img
+                src={ObjectCover}
+                alt="object-detection"
+                className="opacity-20 h-full peer-img"
+              />
+            </a>
+            <h1 className="mt-auto absolute text-5xl">Object Detection</h1>
+          </div>
+          <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
+            <a href="#contact-us" className="h-full">
+              <img
+                src={TTS}
+                alt="object-detection"
+                className="opacity-20 h-full"
+              />
+            </a>
+            <h1 className="mt-auto absolute text-5xl">Text-to-Speech</h1>
+          </div>
+          <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
+            <a href="#contact-us" className="h-full">
+              <img
+                src={STT}
+                alt="object-detection"
+                className="opacity-20 h-full"
+              />
+            </a>
+            <h1 className="mt-auto absolute text-5xl">Speech-to-Text</h1>
+          </div>
+        </div>
       </section>
 
-      {/* Features explanation */}
+      {/* Features explanation goes here*/}
       <section>
         <h3
           className="text-6xl text-black text-center py-3"
@@ -181,7 +224,7 @@ function Home() {
         </div>
       </section>
 
-      {/* About US */}
+      {/* About US goes here*/}
       <section id="about-us">
         <h3
           className="text-6xl text-black text-center py-3"
@@ -193,12 +236,11 @@ function Home() {
           About us
         </h3>
         {/* Parent contianer */}
-
         <div className="border p-4 flex flex-col items-center overflow-scroll scroll-smooth">
           {/* Cards container */}
-          <div className="flex items-center justify-start ml-20">
+          <div className="flex items-center justify-evenly w-full">
             {/* #1 */}
-            <div className="w-[450px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around mx-2">
+            <div className="w-[350px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
               <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
               {/* Description */}
@@ -211,7 +253,7 @@ function Home() {
               </div>
             </div>
             {/* #2 */}
-            <div className="w-[450px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around mx-2">
+            <div className="w-[350px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
               <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
               {/* Description */}
@@ -224,7 +266,7 @@ function Home() {
               </div>
             </div>
             {/* #3 */}
-            <div className="w-[450px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around mx-2">
+            <div className="w-[350px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
               <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
               {/* Description */}
@@ -237,7 +279,7 @@ function Home() {
               </div>
             </div>
             {/* #4 */}
-            <div className="w-[450px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around mx-2">
+            <div className="w-[350px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
               <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
               {/* Description */}
@@ -251,6 +293,7 @@ function Home() {
             </div>
           </div>
         </div>
+
         {/* About us description */}
         <div className="px-10 py-16">
           <p className="text-black text-xl">
@@ -269,7 +312,7 @@ function Home() {
         </div>
       </section>
       <hr />
-      {/* Footer / Contact us */}
+      {/* Footer / Contact us goes here*/}
       <section
         style={{ background: "#353434" }}
         className="w-full h-[206px]"

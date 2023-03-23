@@ -11,7 +11,9 @@ function LoginSignup(props) {
         {/* Logo and Title */}
         <div className="flex justify-start m-2 self-start">
           <img src={Logo} alt="logo" />
-          <h1 className="text-2xl mx-2">Invision</h1>
+          <h1 className="text-2xl mx-2">
+            <i>Assisted Vision</i>
+          </h1>
         </div>
         <br />
         <br />

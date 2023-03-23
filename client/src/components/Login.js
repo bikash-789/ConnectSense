@@ -57,15 +57,8 @@ function Login() {
         Please enter your details
       </h6>
       <br />
-      <button className="py-2 text-lg border bg-slate-50 rounded-md w-3/4">
-        <span>
-          <img src={Google} alt="google" className="inline-block mx-3" />
-        </span>
-        Login with Google
-      </button>
       <br />
       <br />
-      <img src={HRL} alt="hr-line" />
       <br />
       <form className="flex flex-col items-center w-3/4">
         <input
