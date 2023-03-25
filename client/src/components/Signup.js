@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signUp } from "../api/Auth_API";
 import Banner from "./Banner";
@@ -29,16 +29,34 @@ function Signup() {
     if (res.error) {
       setError(res.error);
     }
-    setError(res.message);
+    setRedirect(true);
+  };
+
+  // Redirect function
+  const RedirectUser = () => {
+    const Navigate = useNavigate();
+    if (redirect) {
+      setLoading(false);
+      return Navigate("/login");
+    }
+  };
+
+  // Show banner function
+  const showBanner = () => {
+    if (loading) {
+      return <Banner message="Loading, Just a moment..." />;
+    }
+    if (error) return <Banner message={error} />;
   };
 
   return (
     <div className="w-3/4 m-2 flex flex-col items-center p-2">
-      {error && <Banner message={error} />}
       <h1 className="text-5xl text-center">Welcome!</h1>
       <h6 className="text-slate-500 text-center text-lg">
         Please enter your details
       </h6>
+      <br />
+      {showBanner()}
       <br />
       <form className="flex flex-col items-center w-3/4">
         <input
@@ -77,6 +95,7 @@ function Signup() {
       <p className="text-slate-600">
         Already have an account? <Link to="/login">Login</Link>
       </p>
+      {RedirectUser()}
     </div>
   );
 }

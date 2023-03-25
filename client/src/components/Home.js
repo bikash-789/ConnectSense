@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BGImg from "../assets/images/HomepageBG.svg";
 import SignOut from "../assets/images/SignOut23X18.svg";
 import RightArrow from "../assets/images/RightArrow18X18.svg";
@@ -14,7 +14,17 @@ import ObjectCover from "../assets/images/object-detection.png";
 import TTS from "../assets/images/TTS.png";
 import STT from "../assets/images/STT.webp";
 
+import { isAuthenticated, signout } from "../api/Auth_API";
+
 function Home() {
+  const navigate = useNavigate();
+  // Handle signout
+  const handleSignout = () => {
+    signout(() => {
+      return navigate("/login", { replace: true });
+    });
+  };
+
   return (
     <article className="text-white scroll-smooth" id="header">
       {/* Hero Image goes here */}
@@ -22,7 +32,7 @@ function Home() {
         className="h-screen"
         style={{ backgroundImage: `url(${BGImg})` }}
       >
-        <nav className="mx-auto bg-black w-full text-white fixed py-1">
+        <nav className="mx-auto bg-black w-full text-white fixed py-1 z-10">
           <ul className="flex items-center justify-around">
             <li>
               <Link
@@ -48,12 +58,20 @@ function Home() {
                 <b>CONTACT</b>
               </a>
             </li>
-            <li>
-              <button className="px-5 py-2 text-sm hover:bg-button-color flex items-center">
-                <b>SIGN OUT</b>&nbsp;&nbsp;
-                <img src={SignOut} alt="out" className="inline-block" />
-              </button>
-            </li>
+
+            {isAuthenticated() && (
+              <li>
+                <button
+                  className="px-5 py-2 text-sm hover:bg-button-color transition-colors duration-150 ease-in flex items-center"
+                  onClick={() => {
+                    handleSignout();
+                  }}
+                >
+                  <b>SIGN OUT</b>&nbsp;&nbsp;
+                  <img src={SignOut} alt="out" className="inline-block" />
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
         <div className="relative w-1/3 top-[100px] md:top-[350px] left-[50px] ">

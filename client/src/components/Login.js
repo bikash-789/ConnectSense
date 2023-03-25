@@ -1,6 +1,4 @@
 import React from "react";
-import Google from "../assets/images/google25X25.svg";
-import HRL from "../assets/images/hr_or_bar.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { authenticate, signIn } from "../api/Auth_API";
@@ -45,20 +43,26 @@ function Login() {
   const RedirectUser = () => {
     const Navigate = useNavigate();
     if (redirect) {
-      setLoading(false);
       return Navigate("/home");
     }
   };
+
+  // Show banner function
+  const showBanner = () => {
+    if (loading) {
+      return <Banner message="Loading, Just a moment..." />;
+    }
+    if (error) return <Banner message={error} />;
+  };
+
   return (
     <div className="w-3/4 m-2 flex flex-col items-center p-2">
-      {error && <Banner message={error} />}
       <h1 className="text-5xl text-center">Welcome back!</h1>
       <h6 className="text-slate-500 text-center text-lg">
         Please enter your details
       </h6>
       <br />
-      <br />
-      <br />
+      {showBanner()}
       <br />
       <form className="flex flex-col items-center w-3/4">
         <input
@@ -79,7 +83,7 @@ function Login() {
         <br />
         <br />
         <button
-          className="p-2 border bg-black text-white text-xl rounded-md w-full"
+          className="p-2 border bg-black text-white text-xl rounded-md w-full shadow-2xl"
           onClick={handleSubmit}
         >
           Login
