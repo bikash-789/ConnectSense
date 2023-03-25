@@ -105,33 +105,33 @@ function Home() {
       >
         <div className="flex w-full items-center text-black h-full overflow-hidden">
           <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all  hover:cursor-pointer">
-            <a href="#about-us" className="h-full">
+            <Link to="/object-detection" className="h-full">
               <img
                 src={ObjectCover}
                 alt="object-detection"
                 className="opacity-20 h-full peer-img"
               />
-            </a>
+            </Link>
             <h1 className="mt-auto absolute text-5xl">Object Detection</h1>
           </div>
           <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
-            <a href="#contact-us" className="h-full">
+            <Link to="/tts" className="h-full">
               <img
                 src={TTS}
                 alt="object-detection"
                 className="opacity-20 h-full"
               />
-            </a>
+            </Link>
             <h1 className="mt-auto absolute text-5xl">Text-to-Speech</h1>
           </div>
           <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
-            <a href="#contact-us" className="h-full">
+            <Link to="/stt" className="h-full">
               <img
                 src={STT}
                 alt="object-detection"
                 className="opacity-20 h-full"
               />
-            </a>
+            </Link>
             <h1 className="mt-auto absolute text-5xl">Speech-to-Text</h1>
           </div>
         </div>
@@ -258,7 +258,7 @@ function Home() {
           {/* Cards container */}
           <div className="flex items-center justify-evenly w-full">
             {/* #1 */}
-            <div className="w-[350px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around ml-2">
+            <div className="w-[350px] h-[550px] rounded-3xl bg-stone-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
               <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
               {/* Description */}
@@ -271,7 +271,7 @@ function Home() {
               </div>
             </div>
             {/* #2 */}
-            <div className="w-[350px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around ml-2">
+            <div className="w-[350px] h-[550px] rounded-3xl bg-stone-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
               <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
               {/* Description */}
@@ -284,7 +284,7 @@ function Home() {
               </div>
             </div>
             {/* #3 */}
-            <div className="w-[350px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around ml-2">
+            <div className="w-[350px] h-[550px] rounded-3xl bg-stone-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
               <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
               {/* Description */}
@@ -297,7 +297,7 @@ function Home() {
               </div>
             </div>
             {/* #4 */}
-            <div className="w-[350px] h-[550px] rounded-3xl bg-slate-100 flex flex-col items-center justify-around ml-2">
+            <div className="w-[350px] h-[550px] rounded-3xl bg-stone-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
               <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
               {/* Description */}

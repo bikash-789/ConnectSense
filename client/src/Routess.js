@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/LoginSignup";
 import Home from "./components/Home";
 import PrivateRoute from "./PrivateRoutes";
+import ObjectDetection from "./components/ObjectDetection";
 
 function Routess() {
   return (
@@ -17,6 +18,15 @@ function Routess() {
           element={
             <PrivateRoute>
               <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/object-detection"
+          exact
+          element={
+            <PrivateRoute>
+              <ObjectDetection />
             </PrivateRoute>
           }
         />
