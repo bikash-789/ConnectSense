@@ -4,6 +4,7 @@ import Login from "./components/LoginSignup";
 import Home from "./components/Home";
 import PrivateRoute from "./PrivateRoutes";
 import ObjectDetection from "./components/ObjectDetection";
+import TTS from "./components/TTS";
 
 function Routess() {
   return (
@@ -27,6 +28,15 @@ function Routess() {
           element={
             <PrivateRoute>
               <ObjectDetection />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/tts"
+          exact
+          element={
+            <PrivateRoute>
+              <TTS />
             </PrivateRoute>
           }
         />

@@ -8,13 +8,55 @@ function ObjectDetection() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const [object, setObject] = useState(null);
+  const [prevObjects, setPrevObjects] = useState([]);
+
   const runCoco = async () => {
     const net = await cocossd.load();
-    //  Loop and detect hands
     setInterval(() => {
       detect(net);
     }, 5000);
   };
+
+  const detect = async (net) => {
+    if (
+      typeof webcamRef.current !== "undefined" &&
+      webcamRef.current !== null &&
+      webcamRef.current.video.readyState === 4
+    ) {
+      // Get Video Properties
+      const video = webcamRef.current.video;
+      const videoWidth = webcamRef.current.video.videoWidth;
+      const videoHeight = webcamRef.current.video.videoHeight;
+
+      // Set video width
+      webcamRef.current.video.width = videoWidth;
+      webcamRef.current.video.height = videoHeight;
+
+      // Set canvas height and width
+      canvasRef.current.width = videoWidth;
+      canvasRef.current.height = videoHeight;
+
+      const objects = await net.detect(video);
+
+      // Compare the objects detected in the current frame to those detected in the previous frame
+      const newObjects = objects.filter(
+        (object) =>
+          !prevObjects.some((prevObject) => object.class === prevObject.class)
+      );
+
+      if (newObjects.length > 0) {
+        setObject(newObjects[0].class);
+      }
+      const ctx = canvasRef.current.getContext("2d");
+      // Update the previous objects with the current objects
+      setPrevObjects(objects);
+      drawRect(objects, ctx);
+    }
+  };
+
+  useEffect(() => {
+    runCoco();
+  }, []);
 
   // Draw rectangle box
   const drawRect = (detection, ctx) => {
@@ -35,56 +77,22 @@ function ObjectDetection() {
       ctx.rect(x, y, width, height);
       ctx.stroke();
 
-      //Speech synthesis
-      let utterance = new SpeechSynthesisUtterance(text);
-      // speechSynthesis.speak(utterance);
-      // console.log(utterance);
+      if ("speechSynthesis" in window) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 1;
+        const voices = synth.getVoices();
+        const voice = voices.find((v) => v.name === "Daniel"); // Change this to the name of the desired voice
+        utterance.voice = voice;
+        synth.speak(utterance);
+      }
+
       text = text.toUpperCase();
       let str = text.slice(1, text.length);
       text = text.charAt(0) + str.toLowerCase();
       setObject(text);
     });
   };
-
-  const detect = async (net) => {
-    // Check data is available
-    if (
-      typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null &&
-      webcamRef.current.video.readyState === 4
-    ) {
-      // Get Video Properties
-      const video = webcamRef.current.video;
-      const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
-
-      // Set video width
-      webcamRef.current.video.width = videoWidth;
-      webcamRef.current.video.height = videoHeight;
-
-      // Set canvas height and width
-      canvasRef.current.width = videoWidth;
-      canvasRef.current.height = videoHeight;
-
-      // 4. TODO - Make Detections
-      // e.g. const obj = await net.detect(video);
-
-      const obj = await net.detect(video);
-      //   console.log(obj);
-
-      // Draw mesh
-      const ctx = canvasRef.current.getContext("2d");
-
-      // 5. TODO - Update drawing utility
-      // drawSomething(obj, ctx)
-      drawRect(obj, ctx);
-    }
-  };
-
-  useEffect(() => {
-    runCoco();
-  }, []);
-
   return (
     <FeatureTemplate>
       <div className="p-4 h-3/4">
