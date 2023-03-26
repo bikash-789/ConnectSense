@@ -4,10 +4,12 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
+const fileUpload = require("express-fileupload");
 require("dotenv").config();
 
 // Import routes from directory
 const authRoutes = require("./routes/Auth");
+const pdfParserRouts = require("./routes/PDFParser");
 
 // Initialize app with express server
 const app = express();
@@ -30,12 +32,14 @@ app.use(cors({ origin: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(fileUpload());
 
 // Route middlewares
 app.get("/api", (req, res) => {
   res.send("Welcome to API!");
 });
 app.use(authRoutes);
+app.use(pdfParserRouts);
 
 // Listen a server on port
 app.listen(process.env.PORT, (err) => {
