@@ -14,7 +14,7 @@ function ObjectDetection() {
     const net = await cocossd.load();
     setInterval(() => {
       detect(net);
-    }, 5000);
+    }, 8000);
   };
 
   const detect = async (net) => {

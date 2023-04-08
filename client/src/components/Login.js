@@ -83,7 +83,7 @@ function Login() {
         <br />
         <br />
         <button
-          className="p-2 border bg-black text-white text-xl rounded-md w-full shadow-2xl"
+          className="p-2 border bg-orange-500 text-orange-100 text-xl rounded-md w-full shadow-2xl"
           onClick={handleSubmit}
         >
           Login

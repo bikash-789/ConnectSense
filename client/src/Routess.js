@@ -5,10 +5,12 @@ import Home from "./components/Home";
 import PrivateRoute from "./PrivateRoutes";
 import ObjectDetection from "./components/ObjectDetection";
 import TTS from "./components/TTS";
-
+import VoiceNavigation from "./components/VoiceNavigation";
+import ToDoList from "./components/ToDoList";
 function Routess() {
   return (
     <BrowserRouter>
+      <VoiceNavigation />
       <Routes>
         <Route path="/" exact element={<Login element="login" />} />
         <Route path="/login" exact element={<Login element="login" />} />
@@ -37,6 +39,15 @@ function Routess() {
           element={
             <PrivateRoute>
               <TTS />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/todo-list"
+          exact
+          element={
+            <PrivateRoute>
+              <ToDoList />
             </PrivateRoute>
           }
         />

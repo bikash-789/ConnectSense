@@ -13,12 +13,18 @@ function FeatureTemplate({ children }) {
 
   return (
     <article>
-      <nav className="mx-auto bg-black w-full text-white fixed py-1 z-10">
-        <ul className="flex items-center justify-around">
+      <nav
+        className="mx-auto w-full text-white fixed py-1 z-10"
+        style={{
+          backdropFilter: "blur(15px)",
+          background: "rgba(25, 25, 25, 0.4)",
+        }}
+      >
+        <ul className="flex items-center justify-center">
           <li>
             <Link
               to="/home"
-              className="px-5 py-2 text-sm hover:bg-button-color"
+              className="px-5 py-2 text-sm hover:bg-orange-500 text-orange-100 mx-5"
             >
               <b>HOME</b>
             </Link>
@@ -26,7 +32,7 @@ function FeatureTemplate({ children }) {
           <li>
             <a
               href="#about-us"
-              className="px-5 py-2 text-sm hover:bg-button-color"
+              className="px-5 py-2 text-sm hover:bg-orange-500 text-orange-100 mx-5"
             >
               <b>ABOUT</b>
             </a>
@@ -34,7 +40,7 @@ function FeatureTemplate({ children }) {
           <li>
             <a
               href="#contact-us"
-              className="px-5 py-2 text-sm hover:bg-button-color"
+              className="px-5 py-2 text-sm hover:bg-orange-500 text-orange-100 mx-5"
             >
               <b>CONTACT</b>
             </a>
@@ -42,7 +48,7 @@ function FeatureTemplate({ children }) {
           {isAuthenticated() && (
             <li>
               <button
-                className="px-5 py-2 text-sm hover:bg-button-color transition-colors duration-150 ease-in flex items-center"
+                className="px-5 py-2 text-sm hover:bg-orange-500 text-orange-100 mx-5 transition-colors duration-150 ease-in flex items-center"
                 onClick={() => {
                   handleSignout();
                 }}

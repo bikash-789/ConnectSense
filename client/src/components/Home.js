@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BGImg from "../assets/images/HomepageBG.svg";
 import SignOut from "../assets/images/SignOut23X18.svg";
@@ -17,6 +17,10 @@ import STT from "../assets/images/STT.webp";
 import { isAuthenticated, signout } from "../api/Auth_API";
 
 function Home() {
+  const { SpeechSynthesisUtterance, speechSynthesis } = window;
+  const [text, setText] = useState(
+    "Welcome to Assisted Vision application. We are here to help you with following features like Object Detection, Text-to-Speech, where you can listen to book contents which are in Text and Speech-to-text which will help like live caption. You can see what other person are speaking around you. To navigate to any page, just press the space bar and start speaking the command. The command to navigate to each page goes like this: \n 1. Go to 'home' for navigating to homepage \n 2. Go to 'object detection' for navigating to object detection. \n 3. Go to 'to do list' for navigating to To-do list app \n 4. Go to 'text to speech' for navigating to Text-to-Speech. \n 5. 'sign out' for signning out. "
+  );
   const navigate = useNavigate();
   // Handle signout
   const handleSignout = () => {
@@ -24,7 +28,23 @@ function Home() {
       return navigate("/login", { replace: true });
     });
   };
+  const handleSpeakInstruction = () => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = speechSynthesis.getVoices();
+    // Find the voice you want to use by name and language
+    const voice = voices.find((v) => v.name === "Daniel");
+    utterance.voice = voice;
+    utterance.rate = 1;
+    speechSynthesis.speak(utterance);
+  };
+  // handleSpeakInstruction();
+  // Give voice based instruction to user
+  setTimeout(() => {
+    handleSpeakInstruction();
+    console.log("speaking");
+  }, 2000);
 
+  // Finally return the Homepage
   return (
     <article className="text-white scroll-smooth" id="header">
       {/* Hero Image goes here */}
@@ -32,12 +52,18 @@ function Home() {
         className="h-screen"
         style={{ backgroundImage: `url(${BGImg})` }}
       >
-        <nav className="mx-auto bg-black w-full text-white fixed py-1 z-10">
-          <ul className="flex items-center justify-around">
+        <nav
+          className="mx-auto w-full text-white fixed py-1 z-10"
+          style={{
+            backdropFilter: "blur(15px)",
+            background: "rgba(25, 25, 25, 0.4)",
+          }}
+        >
+          <ul className="flex items-center justify-center">
             <li>
               <Link
                 to="/home"
-                className="px-5 py-2 text-sm hover:bg-button-color"
+                className="px-5 py-2 text-sm hover:bg-orange-500 text-orange-100 mx-5"
               >
                 <b>HOME</b>
               </Link>
@@ -45,7 +71,7 @@ function Home() {
             <li>
               <a
                 href="#about-us"
-                className="px-5 py-2 text-sm hover:bg-button-color"
+                className="px-5 py-2 text-sm hover:bg-orange-500 text-orange-100 mx-5"
               >
                 <b>ABOUT</b>
               </a>
@@ -53,7 +79,7 @@ function Home() {
             <li>
               <a
                 href="#contact-us"
-                className="px-5 py-2 text-sm hover:bg-button-color"
+                className="px-5 py-2 text-sm hover:bg-orange-500 text-orange-100 mx-5"
               >
                 <b>CONTACT</b>
               </a>
@@ -62,7 +88,7 @@ function Home() {
             {isAuthenticated() && (
               <li>
                 <button
-                  className="px-5 py-2 text-sm hover:bg-button-color transition-colors duration-150 ease-in flex items-center"
+                  className="px-5 py-2 mx-5 text-center text-sm hover:bg-slate-700 text-orange-100 transition-colors duration-150 ease-in flex items-center"
                   onClick={() => {
                     handleSignout();
                   }}
@@ -90,7 +116,7 @@ function Home() {
           </p>
           <a
             href="#features"
-            className="rounded-xl md:rounded-xl relative top-10 py-2 md:py-3 px-4 w-[150px] md:w-[200px] md:px-10 bg-orange-500 text-orange-100 flex items-center"
+            className="rounded-xl md:rounded-xl relative top-10 py-2 md:py-3 px-4 w-[180px] md:w-[220px] md:px-10 bg-orange-500 text-orange-100 flex items-center justify-center text-xl"
           >
             Explore now &nbsp;
             <img src={RightArrow} alt="right-arrow" className="inline-block" />
@@ -101,7 +127,7 @@ function Home() {
       <section
         id="features"
         className="h-[712px]"
-        style={{ fontFamily: `'Inter', sans-serif;` }}
+        style={{ fontFamily: `'Inter', sans-serif` }}
       >
         <div className="flex w-full items-center text-black h-full overflow-hidden">
           <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all  hover:cursor-pointer">
@@ -125,7 +151,7 @@ function Home() {
             <h1 className="mt-auto absolute text-5xl">Text-to-Speech</h1>
           </div>
           <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
-            <Link to="/stt" className="h-full">
+            <Link to="/todo-list" className="h-full">
               <img
                 src={STT}
                 alt="object-detection"
@@ -164,18 +190,16 @@ function Home() {
             className="px-10 text-black absolute top-40 w-[692px] text-xl"
             style={{ fontFamily: `'Inter', sans-serif;` }}
           >
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo
-            consectetur sit quia et. Laudantium a delectus quam, consectetur,
-            deleniti quae enim impedit explicabo quibusdam tempora rem ex est
-            sequi rerum. Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Rerum optio dolorem corrupti cum perspiciatis sint mollitia
-            beatae rem magni! Excepturi saepe iure nulla, non delectus dolorem
-            omnis cum vitae odit.
+            Trying to help visually disabled students to have idea about things
+            around them.
             <br />
             <br />
-            <button className="bg-black absolute top-50 border-none text-white w-[173px] px-4 py-1 rounded-3xl shadow-2xl">
+            <Link
+              to="/object-detection"
+              className="bg-black absolute top-50 border-none text-white w-[173px] px-4 py-1 rounded-3xl shadow-2xl text-center"
+            >
               Try now
-            </button>
+            </Link>
           </p>
         </div>
         {/* Here goes Text-to-speech */}
@@ -195,18 +219,16 @@ function Home() {
               className="px-10 text-black w-[692px] text-xl"
               style={{ fontFamily: `'Inter', sans-serif;` }}
             >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Explicabo consectetur sit quia et. Laudantium a delectus quam,
-              consectetur, deleniti quae enim impedit explicabo quibusdam
-              tempora rem ex est sequi rerum. Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Rerum optio dolorem corrupti cum
-              perspiciatis sint mollitia beatae rem magni! Excepturi saepe iure
-              nulla, non delectus dolorem omnis cum vitae odit.
+              A feature to help visually disabled students to read books,
+              novels, materials.
               <br />
               <br />
-              <button className="bg-black border-none text-white px-4 py-1 rounded-3xl shadow-2xl w-[173px]">
+              <Link
+                to="/tts"
+                className="bg-black border-none text-white px-10 py-1 rounded-3xl shadow-2xl w-[173px] text-center"
+              >
                 Try now
-              </button>
+              </Link>
             </p>
           </div>
         </div>
@@ -226,23 +248,21 @@ function Home() {
             className="px-10 text-black absolute top-40 w-[692px] text-xl"
             style={{ fontFamily: `'Inter', sans-serif;` }}
           >
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo
-            consectetur sit quia et. Laudantium a delectus quam, consectetur,
-            deleniti quae enim impedit explicabo quibusdam tempora rem ex est
-            sequi rerum. Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Rerum optio dolorem corrupti cum perspiciatis sint mollitia
-            beatae rem magni! Excepturi saepe iure nulla, non delectus dolorem
-            omnis cum vitae odit.
+            A feature like Live Caption, speech based To-do list helps student
+            to hear what people are talking around.
             <br />
             <br />
-            <button className="bg-black absolute top-50 border-none text-white w-[173px] px-4 py-1 rounded-3xl shadow-2xl">
+            <Link
+              to="/todo-list"
+              className="bg-black absolute top-50 border-none text-white w-[173px] px-4 py-1 rounded-3xl shadow-2xl text-center"
+            >
               Try now
-            </button>
+            </Link>
           </p>
         </div>
       </section>
 
-      {/* About US goes here*/}
+      {/* About us goes here*/}
       <section id="about-us">
         <h3
           className="text-6xl text-black text-center py-3"
@@ -266,8 +286,8 @@ function Home() {
                 className="flex flex-col items-center justify-start text-black w-full py-10"
                 style={{ background: "#FFE5BF" }}
               >
-                <p className="text-2xl"> Developer Name </p>
-                <p className="text-lg">Registraion No.</p>
+                <p className="text-2xl"> Ayush Kanaujiya </p>
+                <p className="text-lg">20BCE2748</p>
               </div>
             </div>
             {/* #2 */}
@@ -279,8 +299,8 @@ function Home() {
                 className="flex flex-col items-center justify-start text-black w-full py-10"
                 style={{ background: "#FFE5BF" }}
               >
-                <p className="text-2xl"> Developer Name </p>
-                <p className="text-lg">Registraion No.</p>
+                <p className="text-2xl">Payal Maheshwari</p>
+                <p className="text-lg">20BCE2759</p>
               </div>
             </div>
             {/* #3 */}
@@ -292,8 +312,8 @@ function Home() {
                 className="flex flex-col items-center justify-start text-black w-full py-10"
                 style={{ background: "#FFE5BF" }}
               >
-                <p className="text-2xl"> Developer Name </p>
-                <p className="text-lg">Registraion No.</p>
+                <p className="text-2xl">Bikash Chauhan</p>
+                <p className="text-lg">20BCE2769</p>
               </div>
             </div>
             {/* #4 */}
@@ -305,8 +325,8 @@ function Home() {
                 className="flex flex-col items-center justify-start text-black w-full py-10"
                 style={{ background: "#FFE5BF" }}
               >
-                <p className="text-2xl"> Developer Name </p>
-                <p className="text-lg">Registraion No.</p>
+                <p className="text-2xl"> Harsh Rajpal </p>
+                <p className="text-lg">20BCI0271</p>
               </div>
             </div>
           </div>
@@ -315,17 +335,20 @@ function Home() {
         {/* About us description */}
         <div className="px-10 py-16">
           <p className="text-black text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi,
-            placeat sequi doloribus porro maxime asperiores voluptatum repellat
-            reprehenderit sed non sint quasi ex sit eos natus vitae tempora
-            delectus earum! Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Eum iusto ab quibusdam tenetur officiis labore molestiae?
-            Optio quia quibusdam quae beatae minima odio at distinctio
-            architecto. Repellendus voluptatum veniam cum. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Tempore enim autem maxime, sequi
-            voluptatibus eveniet ad quisquam obcaecati explicabo fuga mollitia
-            porro in suscipit, nemo beatae fugit perferendis. Voluptate,
-            debitis?
+            We're Computer Science students pursuing our B.Tech at Vellore
+            Institute of Technology. Our flagship app,{" "}
+            <b>
+              <i>Assisted Vision,</i>
+            </b>
+            is designed specifically for visually disabled students. With{" "}
+            <b>
+              <i>Assisted Vision, </i>
+            </b>
+            students can access textbooks, take notes, can have knowledge about
+            things around them all without barriers. The app features advanced
+            technologies like speech-to-text, text-to-speech, and object
+            detection, to ensure that students can interact with the content in
+            a way that works best for them.
           </p>
         </div>
       </section>

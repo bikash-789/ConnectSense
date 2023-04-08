@@ -1,12 +1,18 @@
-const pdfParse = require("pdf-parse");
-
 module.exports.extractText = (req, res) => {
-  if (!req.files && !req.files.pdfFile) {
-    res.status(400).json({
-      error: "No file uploaded!",
+  var fs = require("fs");
+  fs.readFile(req.files.pdfFile, (err, pdfBuffer) => {
+    if (err) {
+      console.log(err);
+    }
+    // pdfBuffer contains the file content
+    new PdfReader().parseBuffer(pdfBuffer, function (err, item) {
+      if (err) callback(err);
+      else if (!item) callback();
+      else if (item.text) {
+        console.log(item.text);
+        res.set("Content-Type", "text/plain");
+        res.send(item.text);
+      }
     });
-  }
-  pdfParse(req.files.pdfFile).then((result) => {
-    res.send(result.text);
   });
 };

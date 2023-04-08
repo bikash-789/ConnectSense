@@ -85,7 +85,7 @@ function Signup() {
         <br />
         <br />
         <button
-          className="p-2 bg-black text-white text-xl rounded-md w-full shadow-2xl"
+          className="p-2 bg-orange-500 text-orange-100 text-xl rounded-md w-full shadow-2xl"
           onClick={handleSubmit}
         >
           Signup
