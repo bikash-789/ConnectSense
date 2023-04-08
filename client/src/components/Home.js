@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BGImg from "../assets/images/HomepageBG.svg";
 import SignOut from "../assets/images/SignOut23X18.svg";
@@ -18,9 +18,8 @@ import { isAuthenticated, signout } from "../api/Auth_API";
 
 function Home() {
   const { SpeechSynthesisUtterance, speechSynthesis } = window;
-  const [text, setText] = useState(
-    "Welcome to Assisted Vision application. We are here to help you with following features like Object Detection, Text-to-Speech, where you can listen to book contents which are in Text and Speech-to-text which will help like live caption. You can see what other person are speaking around you. To navigate to any page, just press the space bar and start speaking the command. The command to navigate to each page goes like this: \n 1. Go to 'home' for navigating to homepage \n 2. Go to 'object detection' for navigating to object detection. \n 3. Go to 'to do list' for navigating to To-do list app \n 4. Go to 'text to speech' for navigating to Text-to-Speech. \n 5. 'sign out' for signning out. "
-  );
+  const text =
+    "Welcome to Assisted Vision application. We are here to help you with following features like Object Detection, Text-to-Speech, where you can listen to book contents which are in Text and Speech-to-text which will help like live caption. You can see what other person are speaking around you. To navigate to any page, just press the space bar and start speaking the command. The command to navigate to each page goes like this: \n 1. Go to 'home' for navigating to homepage \n 2. Go to 'object detection' for navigating to object detection. \n 3. Go to 'to do list' for navigating to To-do list app \n 4. Go to 'text to speech' for navigating to Text-to-Speech. \n 5. 'sign out' for signning out. ";
   const navigate = useNavigate();
   // Handle signout
   const handleSignout = () => {
@@ -36,6 +35,16 @@ function Home() {
     utterance.voice = voice;
     utterance.rate = 1;
     speechSynthesis.speak(utterance);
+
+    // Stop speaking when the S key is pressed
+    document.addEventListener("keydown", handleKeyDown);
+
+    function handleKeyDown(event) {
+      if (event.code === "Space") {
+        speechSynthesis.cancel();
+        document.removeEventListener("keydown", handleKeyDown);
+      }
+    }
   };
   // handleSpeakInstruction();
   // Give voice based instruction to user
