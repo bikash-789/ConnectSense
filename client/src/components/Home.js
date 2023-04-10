@@ -11,6 +11,7 @@ import Instagram from "../assets/images/instagram25X25.svg";
 import LinkedIn from "../assets/images/linked-in25X25.svg";
 import Twitter from "../assets/images/twitter30X25.svg";
 import ObjectCover from "../assets/images/object-detection.png";
+import ToDoList from "../assets/images/to-do-list.png";
 import TTS from "../assets/images/TTS.png";
 import STT from "../assets/images/STT.webp";
 
@@ -19,7 +20,7 @@ import { isAuthenticated, signout } from "../api/Auth_API";
 function Home() {
   const { SpeechSynthesisUtterance, speechSynthesis } = window;
   const text =
-    "Welcome to Assisted Vision application. We are here to help you with following features like Object Detection, Text-to-Speech, where you can listen to book contents which are in Text and Speech-to-text which will help like live caption. You can see what other person are speaking around you. To navigate to any page, just press the space bar and start speaking the command. The command to navigate to each page goes like this: \n 1. Go to 'home' for navigating to homepage \n 2. Go to 'object detection' for navigating to object detection. \n 3. Go to 'to do list' for navigating to To-do list app \n 4. Go to 'text to speech' for navigating to Text-to-Speech. \n 5. 'sign out' for signning out. ";
+    "Welcome to ConnectSense application. We are here to help you with following features like Object Detection, Text-to-Speech, where you can listen to book contents which are in Text and Speech-to-text which will help like live caption. You can see what other person are speaking around you. To navigate to any page, just press the space bar and start speaking the command. The command to navigate to each page goes like this: \n 1. Go to 'home' for navigating to homepage \n 2. Go to 'object detection' for navigating to object detection. \n 3. Go to 'to do list' for navigating to To-do list app \n 4. Go to 'text to speech' for navigating to Text-to-Speech. \n 5. 'sign out' for signning out. ";
   const navigate = useNavigate();
   // Handle signout
   const handleSignout = () => {
@@ -69,6 +70,9 @@ function Home() {
           }}
         >
           <ul className="flex items-center justify-center">
+            <li>
+              <img src={Logo} alt="logo" className="w-[40px]" />
+            </li>
             <li>
               <Link
                 to="/home"
@@ -139,7 +143,7 @@ function Home() {
         style={{ fontFamily: `'Inter', sans-serif` }}
       >
         <div className="flex w-full items-center text-black h-full overflow-hidden">
-          <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all  hover:cursor-pointer">
+          <div className="w-2/8 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all  hover:cursor-pointer">
             <Link to="/object-detection" className="h-full">
               <img
                 src={ObjectCover}
@@ -149,7 +153,7 @@ function Home() {
             </Link>
             <h1 className="mt-auto absolute text-5xl">Object Detection</h1>
           </div>
-          <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
+          <div className="w-2/8 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
             <Link to="/tts" className="h-full">
               <img
                 src={TTS}
@@ -159,8 +163,8 @@ function Home() {
             </Link>
             <h1 className="mt-auto absolute text-5xl">Text-to-Speech</h1>
           </div>
-          <div className="w-2/6 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
-            <Link to="/todo-list" className="h-full">
+          <div className="w-2/8 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
+            <Link to="/stt" className="h-full">
               <img
                 src={STT}
                 alt="object-detection"
@@ -168,6 +172,16 @@ function Home() {
               />
             </Link>
             <h1 className="mt-auto absolute text-5xl">Speech-to-Text</h1>
+          </div>
+          <div className="w-2/8 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
+            <Link to="/todo-list" className="h-full">
+              <img
+                src={ToDoList}
+                alt="to-do-list"
+                className="opacity-20 h-full"
+              />
+            </Link>
+            <h1 className="mt-auto absolute text-5xl">To Do List</h1>
           </div>
         </div>
       </section>
@@ -199,8 +213,11 @@ function Home() {
             className="px-10 text-black absolute top-40 w-[692px] text-xl"
             style={{ fontFamily: `'Inter', sans-serif;` }}
           >
-            Trying to help visually disabled students to have idea about things
-            around them.
+            Object detection is a computer vision technique that uses algorithms
+            and neural networks to recognize and locate objects within digital
+            images or videos. It can help visually impaired students identify
+            and understand the objects around them, providing greater access to
+            information and context.
             <br />
             <br />
             <Link
@@ -228,8 +245,12 @@ function Home() {
               className="px-10 text-black w-[692px] text-xl"
               style={{ fontFamily: `'Inter', sans-serif;` }}
             >
-              A feature to help visually disabled students to read books,
-              novels, materials.
+              Text-to-speech is a feature that converts written text into spoken
+              words, helping visually impaired students access books and
+              materials. Text-to-speech is an important feature for visually
+              impaired students, as it provides a valuable alternative to
+              traditional reading methods and helps them access the same
+              materials as their sighted peers.
               <br />
               <br />
               <Link
@@ -257,8 +278,10 @@ function Home() {
             className="px-10 text-black absolute top-40 w-[692px] text-xl"
             style={{ fontFamily: `'Inter', sans-serif;` }}
           >
-            A feature like Live Caption, speech based To-do list helps student
-            to hear what people are talking around.
+            Speech-to-text is a technology that converts spoken words into
+            written text. It helps visually impaired students follow along with
+            conversations and lectures, take notes, and stay organized. Examples
+            include Live Caption and speech-based to-do lists.
             <br />
             <br />
             <Link
@@ -347,11 +370,11 @@ function Home() {
             We're Computer Science students pursuing our B.Tech at Vellore
             Institute of Technology. Our flagship app,{" "}
             <b>
-              <i>Assisted Vision,</i>
+              <i>ConnectSense,</i>
             </b>
             is designed specifically for visually disabled students. With{" "}
             <b>
-              <i>Assisted Vision, </i>
+              <i>ConnectSense,</i>
             </b>
             students can access textbooks, take notes, can have knowledge about
             things around them all without barriers. The app features advanced
@@ -374,7 +397,9 @@ function Home() {
           <div className="flex items-center justify-start px-10 ">
             <img src={Logo} alt="logo" />
             <p className="px-2 text-xl">
-              <b>Assited Vision</b>
+              <b>
+                <i>ConnectSense</i>
+              </b>
             </p>
           </div>
           {/* Address */}
