@@ -1,3 +1,4 @@
 # ConnectSense
 
-![Prototype](https://user-images.githubusercontent.com/63906998/230722249-6e8850a0-bffe-4f8e-b9dd-874a3152456c.svg)
+
+![FigmaDesign](https://user-images.githubusercontent.com/63906998/230974233-84c85bf3-1de6-4456-b80b-e3d21c9437de.svg)
