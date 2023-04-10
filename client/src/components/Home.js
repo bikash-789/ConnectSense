@@ -9,9 +9,14 @@ import SpeechText from "../assets/images/speechText.svg";
 import Logo from "../assets/images/logo55X55.svg";
 import Instagram from "../assets/images/instagram25X25.svg";
 import LinkedIn from "../assets/images/linked-in25X25.svg";
+import LinkedColor from "../assets/images/LinkedColor.svg";
 import Twitter from "../assets/images/twitter30X25.svg";
 import ObjectCover from "../assets/images/object-detection.png";
 import ToDoList from "../assets/images/to-do-list.png";
+import Harsh from "../assets/images/Harsh.jpeg";
+import Ayush from "../assets/images/Ayush.jpeg";
+import Bikash from "../assets/images/Bikash.jpeg";
+import Payal from "../assets/images/Payal.jpeg";
 import TTS from "../assets/images/TTS.png";
 import STT from "../assets/images/STT.webp";
 
@@ -143,7 +148,7 @@ function Home() {
         style={{ fontFamily: `'Inter', sans-serif` }}
       >
         <div className="flex w-full items-center text-black h-full overflow-hidden">
-          <div className="w-2/8 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all  hover:cursor-pointer">
+          <div className="w-3/12 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all  hover:cursor-pointer">
             <Link to="/object-detection" className="h-full">
               <img
                 src={ObjectCover}
@@ -151,9 +156,11 @@ function Home() {
                 className="opacity-20 h-full peer-img"
               />
             </Link>
-            <h1 className="mt-auto absolute text-5xl">Object Detection</h1>
+            <h1 className="mt-auto absolute text-5xl font-bold">
+              Object Detection
+            </h1>
           </div>
-          <div className="w-2/8 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
+          <div className="w-3/12 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
             <Link to="/tts" className="h-full">
               <img
                 src={TTS}
@@ -161,9 +168,11 @@ function Home() {
                 className="opacity-20 h-full"
               />
             </Link>
-            <h1 className="mt-auto absolute text-5xl">Text-to-Speech</h1>
+            <h1 className="mt-auto absolute text-5xl font-bold">
+              Text-to-Speech
+            </h1>
           </div>
-          <div className="w-2/8 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
+          <div className="w-3/12 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
             <Link to="/stt" className="h-full">
               <img
                 src={STT}
@@ -171,9 +180,11 @@ function Home() {
                 className="opacity-20 h-full"
               />
             </Link>
-            <h1 className="mt-auto absolute text-5xl">Speech-to-Text</h1>
+            <h1 className="mt-auto absolute text-5xl font-bold">
+              Speech-to-Text
+            </h1>
           </div>
-          <div className="w-2/8 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
+          <div className="w-3/12 h-full bg-slate-300 relative flex justify-center items-center hover:scale-110 transition-all hover:cursor-pointer">
             <Link to="/todo-list" className="h-full">
               <img
                 src={ToDoList}
@@ -181,7 +192,7 @@ function Home() {
                 className="opacity-20 h-full"
               />
             </Link>
-            <h1 className="mt-auto absolute text-5xl">To Do List</h1>
+            <h1 className="mt-auto absolute text-5xl font-bold">To Do List</h1>
           </div>
         </div>
       </section>
@@ -308,57 +319,109 @@ function Home() {
         {/* Parent contianer */}
         <div className="border p-4 flex flex-col items-center overflow-scroll scroll-smooth">
           {/* Cards container */}
-          <div className="flex items-center justify-evenly w-full">
+          <div className="flex items-center justify-evenly w-full font-mono">
             {/* #1 */}
             <div className="w-[350px] h-[550px] rounded-3xl bg-stone-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
-              <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
+              <img
+                src={Ayush}
+                alt="developer"
+                className="rounded-full bg-slate-50 h-[210px] w-[210px] object-cover"
+                style={{ boxShadow: "0px 3px 16px 1px rgba(0, 0, 0, 0.25)" }}
+              />
               {/* Description */}
               <div
                 className="flex flex-col items-center justify-start text-black w-full py-10"
                 style={{ background: "#FFE5BF" }}
               >
-                <p className="text-2xl"> Ayush Kanaujiya </p>
-                <p className="text-lg">20BCE2748</p>
+                <p className="text-2xl"> {"<Ayush Kanaujiya />"}</p>
+                <p className="text-lg">{"<20BCE2748 />"}</p>
+                <br />
+                <a href="https://www.linkedin.com/in/harsh-rajpal/">
+                  <img
+                    src={LinkedColor}
+                    alt="linked-in"
+                    className="w-[35px] h-[35px]"
+                  />
+                </a>
               </div>
             </div>
             {/* #2 */}
             <div className="w-[350px] h-[550px] rounded-3xl bg-stone-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
-              <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
+              <img
+                src={Payal}
+                alt="developer"
+                className="rounded-full bg-slate-50 h-[210px] w-[210px] object-cover"
+                style={{ boxShadow: "0px 3px 16px 1px rgba(0, 0, 0, 0.25)" }}
+              />
               {/* Description */}
               <div
-                className="flex flex-col items-center justify-start text-black w-full py-10"
+                className="flex flex-col items-center justify-start text-black w-full py-10 "
                 style={{ background: "#FFE5BF" }}
               >
-                <p className="text-2xl">Payal Maheshwari</p>
-                <p className="text-lg">20BCE2759</p>
+                <p className="text-2xl">{"<Payal Maheshwari />"}</p>
+                <p className="text-lg">{"<20BCE2759 />"}</p>
+                <br />
+                <a href="https://www.linkedin.com/in/harsh-rajpal/">
+                  <img
+                    src={LinkedColor}
+                    alt="linked-in"
+                    className="w-[35px] h-[35px]"
+                  />
+                </a>
               </div>
             </div>
             {/* #3 */}
             <div className="w-[350px] h-[550px] rounded-3xl bg-stone-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
-              <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
+              <img
+                src={Bikash}
+                alt="developer"
+                className="rounded-full bg-slate-50 h-[210px] w-[210px] object-cover"
+                style={{ boxShadow: "0px 3px 16px 1px rgba(0, 0, 0, 0.25)" }}
+              />
               {/* Description */}
               <div
                 className="flex flex-col items-center justify-start text-black w-full py-10"
                 style={{ background: "#FFE5BF" }}
               >
-                <p className="text-2xl">Bikash Chauhan</p>
-                <p className="text-lg">20BCE2769</p>
+                <p className="text-2xl">{"<Bikash Chauhan />"}</p>
+                <p className="text-lg">{"<20BCE2769 />"}</p>
+                <br />
+                <a href="https://www.linkedin.com/in/harsh-rajpal/">
+                  <img
+                    src={LinkedColor}
+                    alt="linked-in"
+                    className="w-[35px] h-[35px]"
+                  />
+                </a>
               </div>
             </div>
             {/* #4 */}
             <div className="w-[350px] h-[550px] rounded-3xl bg-stone-100 flex flex-col items-center justify-around ml-2">
               {/* Image */}
-              <div className="rounded-full bg-slate-50 h-[246px] w-[246px]"></div>
+              <img
+                src={Harsh}
+                alt="developer"
+                className="rounded-full bg-slate-50 h-[210px] w-[210px] object-cover"
+                style={{ boxShadow: "0px 3px 16px 1px rgba(0, 0, 0, 0.25)" }}
+              />
               {/* Description */}
               <div
                 className="flex flex-col items-center justify-start text-black w-full py-10"
                 style={{ background: "#FFE5BF" }}
               >
-                <p className="text-2xl"> Harsh Rajpal </p>
-                <p className="text-lg">20BCI0271</p>
+                <p className="text-2xl">{"<Harsh Rajpal />"}</p>
+                <p className="text-lg">{"<20BCI0271 />"}</p>
+                <br />
+                <a href="https://www.linkedin.com/in/harsh-rajpal/">
+                  <img
+                    src={LinkedColor}
+                    alt="linked-in"
+                    className="w-[35px] h-[35px]"
+                  />
+                </a>
               </div>
             </div>
           </div>
