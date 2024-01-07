@@ -9,13 +9,11 @@ function Signup() {
     name: "",
     email: "",
     password: "",
+    error: false,
+    loading: false,
+    redirect: false,
   });
-
-  // Useful hooks for state management
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-
+  const { name, email, password, error, loading, redirect } = values;
   // Handle change method
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,18 +23,34 @@ function Signup() {
   // Handle submit method
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await signUp(values);
-    if (res.error) {
-      setError(res.error);
+    if (email === "" || password === "" || name == "") {
+      setValues({
+        ...values,
+        error: "All fields are required",
+      });
+      return;
     }
-    setRedirect(true);
+    const res = await signUp(values);
+    setValues({ ...values, loading: true });
+    if (res.error) {
+      setValues({ ...values, error: res.error });
+    } else {
+      setValues({
+        ...values,
+        name: "",
+        email: "",
+        password: "",
+        loading: false,
+        redirect: true,
+      });
+    }
   };
 
   // Redirect function
   const RedirectUser = () => {
     const Navigate = useNavigate();
     if (redirect) {
-      setLoading(false);
+      setValues({ ...values, loading: false });
       return Navigate("/login");
     }
   };
@@ -58,7 +72,10 @@ function Signup() {
       <br />
       {showBanner()}
       <br />
-      <form className="flex flex-col items-center w-3/4">
+      <form
+        className="flex flex-col items-center w-3/4"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           name="name"
@@ -85,8 +102,8 @@ function Signup() {
         <br />
         <br />
         <button
+          type="submit"
           className="p-2 bg-orange-500 text-orange-100 text-xl rounded-md w-full shadow-2xl"
-          onClick={handleSubmit}
         >
           Signup
         </button>

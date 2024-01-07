@@ -9,33 +9,43 @@ function Login() {
   const [values, setValues] = useState({
     email: "",
     password: "",
+    error: false,
+    loading: false,
+    redirect: false,
   });
-
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-
+  const { email, password, error, loading, redirect } = values;
   // Handle change method
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+    setValues({ ...values, error: false, [name]: value });
   };
 
   // Handle submit method
   const handleSubmit = async (e) => {
+    setValues({ ...values, loading: false });
+    // This will prevent the page from reloading
     e.preventDefault();
-    setLoading(true);
-    const res = await signIn(values);
-    if (res.error) {
-      setLoading(false);
-      setError(res.error);
-      setRedirect(false);
-    } else {
-      authenticate(res, () => {
-        setError(false);
-        setLoading(false);
-        setRedirect(true);
+    if (email === "" || password === "") {
+      setValues({
+        ...values,
+        error: "Enter email and password",
       });
+    } else {
+      // signin - a method that sends form data to backend and returns the response
+      setValues({ ...values, loading: true });
+      const res = await signIn({ email, password });
+      setValues({ ...values, loading: true });
+      if (res.error) {
+        setValues({ ...values, error: res.error });
+      } else {
+        setValues({
+          ...values,
+          email: "",
+          password: "",
+          loading: false,
+          redirect: true,
+        });
+      }
     }
   };
 
@@ -62,7 +72,7 @@ function Login() {
         Please enter your details
       </h6>
       <br />
-      {showBanner()}
+      {(loading || error) && showBanner()}
       <br />
       <form
         className="flex flex-col items-center w-3/4"

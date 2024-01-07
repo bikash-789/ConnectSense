@@ -1,6 +1,6 @@
 // Signup
-export const signUp = async (user) => {
-  return fetch(process.env.REACT_APP_API_URL + "/signup", {
+export const signUp = (user) => {
+  return fetch(`${process.env.REACT_APP_API_URL}/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -8,18 +8,17 @@ export const signUp = async (user) => {
     },
     body: JSON.stringify(user),
   })
-    .then((res) => {
-      return res.json();
+    .then((response) => {
+      return response.json();
     })
     .catch((err) => {
       console.log(err);
-      return err;
     });
 };
 
 // Signin
 export const signIn = async (user) => {
-  return fetch(process.env.REACT_APP_API_URL + "/signin", {
+  return fetch(`${process.env.REACT_APP_API_URL}/signin`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -61,7 +60,7 @@ export const signout = (next) => {
   if (typeof window != undefined) {
     localStorage.removeItem("jwt");
     next();
-    return fetch(`http://localhost:8000/signout`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/signout`, {
       method: "GET",
     })
       .then((response) => {
