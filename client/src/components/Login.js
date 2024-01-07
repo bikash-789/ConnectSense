@@ -38,12 +38,12 @@ function Login() {
       if (res.error) {
         setValues({ ...values, error: res.error });
       } else {
-        setValues({
-          ...values,
-          email: "",
-          password: "",
-          loading: false,
-          redirect: true,
+        authenticate(data, () => {
+          setValues({
+            ...values,
+            loading: false,
+            redirect: true,
+          });
         });
       }
     }
