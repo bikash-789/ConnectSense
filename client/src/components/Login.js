@@ -13,6 +13,7 @@ function Login() {
     loading: false,
     redirect: false,
   });
+  const Navigate = useNavigate();
   const { email, password, error, loading, redirect } = values;
   // Handle change method
   const handleChange = (e) => {
@@ -20,30 +21,38 @@ function Login() {
     setValues({ ...values, error: false, [name]: value });
   };
 
-  // Handle submit method
   const handleSubmit = async (e) => {
-    setValues({ ...values, loading: false });
-    // This will prevent the page from reloading
     e.preventDefault();
+    setValues({ ...values, loading: true, error: "" }); // Reset error state
+
     if (email === "" || password === "") {
       setValues({
         ...values,
         error: "Enter email and password",
+        loading: false,
       });
     } else {
-      // signin - a method that sends form data to backend and returns the response
-      setValues({ ...values, loading: true });
-      const res = await signIn({ email, password });
-      setValues({ ...values, loading: true });
-      if (res.error) {
-        setValues({ ...values, error: res.error });
-      } else {
-        authenticate(data, () => {
+      try {
+        const res = await signIn({ email, password });
+        if (res && res.error) {
           setValues({
             ...values,
+            error: res.error,
             loading: false,
-            redirect: true,
+            redirect: false,
           });
+        } else {
+          authenticate(res, () => {
+            Navigate("/");
+          });
+        }
+      } catch (error) {
+        console.error(error);
+        setValues({
+          ...values,
+          error: "An error occured",
+          loading: false,
+          redirect: false,
         });
       }
     }
@@ -53,7 +62,7 @@ function Login() {
   const RedirectUser = () => {
     const Navigate = useNavigate();
     if (redirect) {
-      return Navigate("/home");
+      return Navigate("/");
     }
   };
 

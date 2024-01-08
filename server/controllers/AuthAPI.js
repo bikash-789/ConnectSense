@@ -63,3 +63,11 @@ module.exports.signIn = (req, res) => {
     });
   });
 };
+
+//
+// READ - will check if the current user is signed in or not
+exports.requireSignIn = jwt({
+  secret: process.env.SECRET,
+  algorithms: ["HS256"],
+  userProperty: "auth",
+});

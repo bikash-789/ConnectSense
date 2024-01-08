@@ -31,8 +31,8 @@ function LoginSignup(props) {
             style={{
               background:
                 "linear-gradient(90.54deg, #FF8800 16.98%, rgba(197, 191, 59, 0.61) 58.13%, rgba(0, 0, 0, 0) 109.94%)",
-              webkitBackgroundClip: "text",
-              webkitTextFillColor: "transparent",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               backgroundClip: "text",
               textFillColor: "transparent",
             }}

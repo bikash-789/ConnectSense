@@ -157,8 +157,8 @@ function ToDoList() {
     <FeatureTemplate>
       <div className="p-4 h-3/4">
         <div className="flex">
-          <Link to="/home" className="inline-block">
-            <img src={Prev} width={30} height={30} />
+          <Link to="/" className="inline-block">
+            <img src={Prev} width={30} height={30} alt="go back" />
           </Link>
           <p className="text-2xl font-semibold  inline-block ml-3">
             Text-to-Speech

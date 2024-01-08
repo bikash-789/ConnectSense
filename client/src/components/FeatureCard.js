@@ -6,7 +6,7 @@ function FeatureCard({ title, description, image, link }) {
       <div className="flex flex-col items-start w-full md:w-10/12">
         <h2
           className="text-black font-bold text-2xl"
-          style={{ fontFamily: `'Inter', sans-serif;` }}
+          style={{ fontFamily: `'Inter', sans-serif` }}
         >
           {title}
         </h2>

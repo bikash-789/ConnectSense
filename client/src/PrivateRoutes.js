@@ -4,7 +4,7 @@ import { isAuthenticated } from "./api/Auth_API";
 
 function PrivateRoute({ children }) {
   const auth = isAuthenticated();
-  if (!auth) return <Navigate to="/login" replace />;
+  if (!auth) return <Navigate to="/signin" replace />;
   return children;
 }
 

@@ -1,4 +1,3 @@
-// Signup
 export const signUp = (user) => {
   return fetch(`${process.env.REACT_APP_API_URL}/signup`, {
     method: "POST",
@@ -34,7 +33,6 @@ export const signIn = async (user) => {
 
 //authenticate
 export const authenticate = (data, next) => {
-  // eslint-disable-next-line
   if (typeof window != undefined) {
     localStorage.setItem("jwt", JSON.stringify(data));
     next();

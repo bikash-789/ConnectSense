@@ -13,11 +13,10 @@ function Routess() {
     <BrowserRouter>
       <VoiceNavigation />
       <Routes>
-        <Route path="/" exact element={<Login element="login" />} />
-        <Route path="/login" exact element={<Login element="login" />} />
+        <Route path="/signin" exact element={<Login element="login" />} />
         <Route path="/signup" exact element={<Login element="signup" />} />
         <Route
-          path="/home"
+          path="/"
           exact
           element={
             <PrivateRoute>

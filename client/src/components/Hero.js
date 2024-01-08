@@ -12,7 +12,7 @@ function Hero() {
   // Handle signout
   const handleSignout = () => {
     signout(() => {
-      return navigate("/login", { replace: true });
+      return navigate("/signin", { replace: true });
     });
   };
   return (
@@ -33,7 +33,7 @@ function Hero() {
           </li>
           <li className="hidden lg:inline-block">
             <Link
-              to="/home"
+              to="/"
               className="px-5 py-2 text-sm hover:bg-orange-500 text-orange-100 mx-5"
             >
               <b>HOME</b>

@@ -23,7 +23,7 @@ function Signup() {
   // Handle submit method
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "" || password === "" || name == "") {
+    if (email === "" || password === "" || name === "") {
       setValues({
         ...values,
         error: "All fields are required",
@@ -51,7 +51,7 @@ function Signup() {
     const Navigate = useNavigate();
     if (redirect) {
       setValues({ ...values, loading: false });
-      return Navigate("/login");
+      return Navigate("/signin");
     }
   };
 
@@ -110,7 +110,7 @@ function Signup() {
         <br />
       </form>
       <p className="text-slate-600">
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account? <Link to="/signin">Login</Link>
       </p>
       {RedirectUser()}
     </div>
