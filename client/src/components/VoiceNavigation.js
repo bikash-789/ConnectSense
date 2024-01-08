@@ -72,7 +72,7 @@ function VoiceNavigation() {
 
   const signoutCommand = () => {
     signout(() => {
-      return navigate("/login", { replace: true });
+      return navigate("/signin", { replace: true });
     });
   };
   useEffect(() => {
