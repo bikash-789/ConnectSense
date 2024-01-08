@@ -1,5 +1,5 @@
 export const addToList = async (listItem) => {
-  return fetch(process.env.REACT_APP_API_URL + "addToList", {
+  return fetch(process.env.REACT_APP_API_URL + "/addToList", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -10,7 +10,7 @@ export const addToList = async (listItem) => {
 };
 
 export const getList = async () => {
-  return fetch(process.env.REACT_APP_API_URL + "getList", {
+  return fetch(process.env.REACT_APP_API_URL + "/getList", {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -23,7 +23,7 @@ export const getList = async () => {
 };
 
 export const deleteItem = async (id) => {
-  return fetch(process.env.REACT_APP_API_URL + `deleteItem/${id}`, {
+  return fetch(process.env.REACT_APP_API_URL + `/deleteItem/${id}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",
