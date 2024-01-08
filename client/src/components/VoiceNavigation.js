@@ -27,7 +27,7 @@ function VoiceNavigation() {
         case "go to text to speech":
           navigateToTTS();
           break;
-        case "go to to do list":
+        case "go to todo list":
           navigateToToDoList();
           break;
         case "sign out":
@@ -51,7 +51,7 @@ function VoiceNavigation() {
   const navigateToHomePage = () => {
     // Add logic to navigate to home page
     console.log("Navigating to home page");
-    return navigate("/home", { replace: true });
+    return navigate("/", { replace: true });
   };
 
   const navigateToObjectDetection = () => {
