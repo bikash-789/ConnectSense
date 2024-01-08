@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
+import * as tf from "@tensorflow/tfjs";
+import "@tensorflow/tfjs-backend-cpu";
+import "@tensorflow/tfjs-backend-webgl";
 import * as cocossd from "@tensorflow-models/coco-ssd";
-import "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import { Link } from "react-router-dom";
 import FeatureTemplate from "./FeatureTemplate";
